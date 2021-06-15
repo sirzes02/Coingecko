@@ -1,6 +1,5 @@
 import React from "react";
 import { View } from "react-native";
-import marketType from "../../types/marketType";
 import {
   Container,
   CoinName,
@@ -11,25 +10,29 @@ import {
   TextPrice,
   TextPercentage,
 } from "./styles";
+import marketType from "../../types/marketType";
 
 interface Props {
   coin: marketType;
 }
 
 const CoinItem: React.FC<Props> = ({ coin }) => {
+  const { image, name, symbol, current_price, price_change_percentage_24h } =
+    coin;
+
   return (
     <Container>
       <CoinName>
-        <Icon source={{ uri: coin.image }} />
+        <Icon source={{ uri: image }} />
         <ContainerName>
-          <Text>{coin.name}</Text>
-          <TextSymbol>{coin.symbol}</TextSymbol>
+          <Text>{name}</Text>
+          <TextSymbol>{symbol}</TextSymbol>
         </ContainerName>
       </CoinName>
       <View>
-        <TextPrice>${coin.current_price}</TextPrice>
-        <TextPercentage price={coin.price_change_percentage_24h}>
-          {coin.price_change_percentage_24h}
+        <TextPrice>${current_price}</TextPrice>
+        <TextPercentage price={price_change_percentage_24h}>
+          {price_change_percentage_24h}
         </TextPercentage>
       </View>
     </Container>

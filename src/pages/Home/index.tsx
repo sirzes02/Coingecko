@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { StatusBar } from "react-native";
-import marketType from "../../types/marketType";
-import CoinItem from "../../components/CoinItem/";
 import {
   Container,
   Header,
@@ -9,6 +7,9 @@ import {
   SearchInput,
   StyledFlatList,
 } from "./styles";
+import marketType from "../../types/marketType";
+import CoinItem from "../../components/CoinItem/";
+import colors from "../../styles/colors";
 
 const Home: React.FC = () => {
   const [coins, setCoins] = useState<marketType[]>([]);
@@ -28,23 +29,25 @@ const Home: React.FC = () => {
     loadData();
   }, []);
 
+  const sentCoin: marketType[] = coins.filter(
+    (coin: marketType) =>
+      coin.name.toLowerCase().includes(search.toLowerCase()) ||
+      coin.symbol.toLowerCase().includes(search.toLowerCase())
+  );
+
   return (
     <Container>
-      <StatusBar backgroundColor="#141414" />
+      <StatusBar backgroundColor={colors.background} />
       <Header>
         <Title>CrytoMarket</Title>
         <SearchInput
           placeholder="Search a Coin"
-          placeholderTextColor="#858585"
-          onChangeText={(text) => setSearch(text)}
+          placeholderTextColor={colors.placeholders}
+          onChangeText={setSearch}
         />
       </Header>
       <StyledFlatList
-        data={coins.filter(
-          (coin: marketType) =>
-            coin.name.toLowerCase().includes(search.toLowerCase()) ||
-            coin.symbol.toLowerCase().includes(search.toLowerCase())
-        )}
+        data={sentCoin}
         renderItem={({ item }) => <CoinItem coin={item} />}
         showsVerticalScrollIndicator={false}
         refreshing={refreshing}

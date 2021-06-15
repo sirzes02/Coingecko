@@ -1,30 +1,31 @@
 import { FlatList } from "react-native";
 import styled from "styled-components/native";
+import colors from "../../styles/colors";
 import marketType from "../../types/marketType";
 
 export const Container = styled.View`
-  background-color: #141414;
+  background-color: ${colors.background};
   align-items: center;
-  flex: 1;
+  flex: 1px;
 `;
 
 export const Header = styled.View`
   flex-direction: row;
   justify-content: space-between;
   width: 90%;
-  margin-bottom: 10;
+  margin-bottom: 10px;
 `;
 
 export const Title = styled.Text`
-  color: #fff;
-  margin-top: 10;
-  font-size: 20;
+  color: ${colors.textPrimary};
+  margin-top: 10px;
+  font-size: 20px;
 `;
 
 export const SearchInput = styled.TextInput`
-  color: #fff;
-  border-bottom-color: #4657ce;
-  border-bottom-width: 1;
+  color: ${colors.textPrimary};
+  border-bottom-color: ${colors.accent};
+  border-bottom-width: 1px;
   width: 40%;
   text-align: center;
 `;

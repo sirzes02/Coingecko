@@ -1,8 +1,8 @@
 import styled from "styled-components/native";
+import colors from "../../styles/colors";
 
 export const Container = styled.View`
-  background-color: #121212;
-  padding-top: 10;
+  padding-top: 10px;
   flex-direction: row;
   justify-content: space-between;
 `;
@@ -12,26 +12,26 @@ export const CoinName = styled.View`
 `;
 
 export const Icon = styled.Image`
-  width: 30;
-  height: 30;
+  width: 30px;
+  height: 30px;
 `;
 
 export const Text = styled.Text`
-  color: #ffffff;
+  color: ${colors.textPrimary};
 `;
 
 export const TextSymbol = styled.Text`
-  color: #434343;
+  color: ${colors.textSecondary};
   text-transform: uppercase;
 `;
 
 export const TextPrice = styled.Text`
-  color: #fff;
+  color: ${colors.textPrimary};
   text-align: right;
 `;
 
 export const ContainerName = styled.View`
-  margin-left: 10;
+  margin-left: 10px;
 `;
 
 interface PropsPercentage {
@@ -40,5 +40,5 @@ interface PropsPercentage {
 
 export const TextPercentage = styled.Text<PropsPercentage>`
   text-align: right;
-  color: ${(props) => (props.price > 0 ? "#00b5b9" : "#fc4433")};
+  color: ${(props) => (props.price > 0 ? colors.up : colors.down)};
 `;
